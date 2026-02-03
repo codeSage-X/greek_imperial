@@ -7,7 +7,6 @@ import { Star } from 'lucide-react'
 
 interface ReviewForm {
   name: string
-  whatsapp: string
   phone: string
   email: string
   feedback: string
@@ -17,19 +16,23 @@ interface ReviewForm {
 export default function ReviewPage() {
   const [formData, setFormData] = useState<ReviewForm>({
     name: '',
-    whatsapp: '',
     phone: '',
     email: '',
     feedback: '',
     stars: 0,
   })
+
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  // Google Maps place ID
   const GOOGLE_MAPS_PLACE_ID = 'ChIJAYprFRjPaRARGpOwgZJzVds'
-  const GOOGLE_MAPS_REVIEW_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_MAPS_PLACE_ID}`
+  // URL to open review modal directly
+  const GOOGLE_MAPS_REVIEW_MODAL_URL = `https://www.google.com/maps/place/?q=place_id:${GOOGLE_MAPS_PLACE_ID}&review=1`
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
@@ -39,28 +42,40 @@ export default function ReviewPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    // ⭐ Frontend validation
+    if (formData.stars < 1) {
+      alert('Please select a star rating')
+      return
+    }
+
     setLoading(true)
 
     try {
-      // Submit to your API route
       const res = await fetch('/api/reviews', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
 
-      if (res.ok) {
-        setSubmitted(true)
-        setTimeout(() => setSubmitted(false), 3000)
+      const data = await res.json()
 
-        // Redirect to Google Maps review page
-        window.location.href = GOOGLE_MAPS_REVIEW_URL
-      } else {
-        alert('Failed to submit review. Please try again.')
+      if (!res.ok) {
+        console.error('API ERROR:', data)
+        alert(data?.error || 'Failed to submit review')
+        return
       }
+
+      console.log('Review saved:', data)
+      setSubmitted(true)
+
+      // Delay to allow backend processing
+      setTimeout(() => {
+        window.location.href = GOOGLE_MAPS_REVIEW_MODAL_URL
+      }, 700)
     } catch (error) {
-      console.error(error)
-      alert('An error occurred. Please try again.')
+      console.error('NETWORK ERROR:', error)
+      alert('An unexpected error occurred')
     } finally {
       setLoading(false)
     }
@@ -72,6 +87,7 @@ export default function ReviewPage() {
         <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-center">
           Leave a Review
         </h1>
+
         <p className="text-lg font-light text-foreground/70 text-center mb-12">
           Share your experience with Greek Imperial
         </p>
@@ -80,95 +96,96 @@ export default function ReviewPage() {
           <form className="space-y-6" onSubmit={handleSubmit}>
             {/* Name */}
             <div>
-              <label className="block text-sm font-semibold mb-2">Full Name *</label>
+              <label className="block text-sm font-semibold mb-2">
+                Full Name *
+              </label>
               <input
                 type="text"
                 name="name"
+                required
                 value={formData.name}
                 onChange={handleChange}
-                required
-                placeholder="John Doe"
-                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 font-light"
+                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md"
               />
             </div>
 
-            {/* WhatsApp */}
-            <div>
-              <label className="block text-sm font-semibold mb-2">WhatsApp Number</label>
-              <input
-                type="tel"
-                name="whatsapp"
-                value={formData.whatsapp}
-                onChange={handleChange}
-                placeholder="+234 XXX XXX XXXX"
-                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 font-light"
-              />
-            </div>
+          
 
             {/* Phone */}
             <div>
-              <label className="block text-sm font-semibold mb-2">Phone Number</label>
+              <label className="block text-sm font-semibold mb-2">
+                Phone Number
+              </label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+234 XXX XXX XXXX"
-                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 font-light"
+                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-semibold mb-2">Email *</label>
+              <label className="block text-sm font-semibold mb-2">
+                Email *
+              </label>
               <input
                 type="email"
                 name="email"
+                required
                 value={formData.email}
                 onChange={handleChange}
-                required
-                placeholder="john@example.com"
-                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 font-light"
+                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md"
               />
             </div>
 
             {/* Feedback */}
-            <div>
-              <label className="block text-sm font-semibold mb-2">Feedback *</label>
-              <textarea
-                name="feedback"
-                value={formData.feedback}
-                onChange={handleChange}
-                required
-                rows={5}
-                placeholder="Write your review here..."
-                className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 font-light resize-none"
-              />
-            </div>
+              <div>
+                <label className="block text-sm font-semibold mb-2">
+                  Feedback * (max 250  characters)
+                </label>
+                <textarea
+                  name="feedback"
+                  required
+                  rows={5}
+                  maxLength={250} // ← restricts input
+                  value={formData.feedback}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md resize-none"
+                />
+                <p className="text-sm text-foreground/50 mt-1">
+                  {formData.feedback.length} / 300
+                </p>
+              </div>
 
-            {/* Star Rating */}
+            {/* Stars */}
             <div>
-              <label className="block text-sm font-semibold mb-2">Rating *</label>
+              <label className="block text-sm font-semibold mb-2">
+                Rating *
+              </label>
               <div className="flex gap-2">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star
                     key={star}
-                    className={`h-8 w-8 cursor-pointer transition-colors ${
-                      formData.stars >= star ? 'text-yellow-400' : 'text-foreground/50'
-                    }`}
                     onClick={() => handleStarClick(star)}
+                    className={`h-8 w-8 cursor-pointer ${
+                      formData.stars >= star
+                        ? 'text-yellow-400'
+                        : 'text-foreground/50'
+                    }`}
                   />
                 ))}
               </div>
             </div>
 
-            <Button type="submit" className="w-full font-light tracking-wide" disabled={loading}>
-              {loading ? 'Submitting...' : 'Submit Review'}
+            <Button disabled={loading} className="w-full">
+              {loading ? 'Submitting…' : 'Submit Review'}
             </Button>
 
             {submitted && (
-              <p className="text-green-600 font-light mt-4 text-center">
-                Thank you for your review! Redirecting to Google Maps...
+              <p className="text-green-600 text-center mt-4">
+                Review saved! Redirecting to Google Maps…
               </p>
             )}
           </form>

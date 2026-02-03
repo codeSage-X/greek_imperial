@@ -139,7 +139,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce animate-onload">
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 animate-bounce animate-onload">
             <ChevronDown className="h-6 w-6 text-white/60" />
           </div>
         </div>

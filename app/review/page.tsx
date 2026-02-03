@@ -155,7 +155,7 @@ export default function ReviewPage() {
                   className="w-full px-4 py-3 bg-muted/50 border border-border rounded-md resize-none"
                 />
                 <p className="text-sm text-foreground/50 mt-1">
-                  {formData.feedback.length} / 300
+                  {formData.feedback.length} / 250
                 </p>
               </div>
 

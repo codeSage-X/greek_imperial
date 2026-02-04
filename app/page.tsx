@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -131,12 +131,12 @@ export default function Home() {
           </div>
 
           <div className="flex gap-4 justify-center mb-12 flex-wrap animate-onload">
-            <Link href="/contact">
+            <a href="/contact">
               <Button size="lg" className="font-light tracking-wide bg-white text-black hover:bg-gray-100">Reserve a Table</Button>
-            </Link>
-            <Link href="/events">
+            </a>
+            <a href="/events">
               <Button size="lg" variant="outline" className="font-light tracking-wide bg-transparent border-white text-white hover:bg-white/10">View Events</Button>
-            </Link>
+            </a>
           </div>
 
           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 animate-bounce animate-onload">
@@ -200,18 +200,18 @@ export default function Home() {
                   <span className="text-sm font-semibold tracking-widest text-primary mb-2 block">{event.date}</span>
                   <h3 className="text-2xl font-serif font-bold mb-2">{event.name}</h3>
                   <p className="font-light text-foreground/70 mb-4">{event.description}</p>
-                  <Link href="/events">
+                  <a href="/events">
                     <Button variant="outline" className="w-full font-light bg-transparent">Learn More</Button>
-                  </Link>
+                  </a>
                 </div>
               </Card>
             ))}
           </div>
 
           <div className="text-center">
-            <Link href="/events">
+            <a href="/events">
               <Button size="lg" variant="outline" className="font-light tracking-wide bg-transparent">View All Events</Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

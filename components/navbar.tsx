@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+
 import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -18,6 +18,7 @@ export default function Navbar() {
     { label: 'Events', href: '/events' },
     { label: 'Contact', href: '/contact' },
     { label: 'Write a review', href: '/review' },
+    { label: 'Creek n greek', href: '/https://creek-n-greek.vercel.app/' },
   ]
 
   return (

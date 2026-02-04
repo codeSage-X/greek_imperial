@@ -97,15 +97,15 @@ export default function Gallery() {
       <section className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-serif font-bold text-center mb-16">Club Vibes</h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 py-16">
             {[
-              { id: 1, title: 'Weekend Energy', duration: '2:45', src: '/club_vid.mp4' },
-              { id: 2, title: 'DJ Sessions', duration: '3:20', src: '/club_vid.mp4' },
+              { id: 1, title: 'Weekend Energy', duration: '2:45', src: '/vid2.mp4' },
+              { id: 2, title: 'DJ Sessions', duration: '3:20', src: '/vid3.mp4' },
             ].map((video) => {
               const videoState = videoStates.find(v => v.id === video.id) || { isPlaying: false, isMuted: false }
               return (
-                <Card key={video.id} className="overflow-hidden border border-border group">
-                  <div className="relative aspect-video bg-black flex items-center justify-center">
+                <Card key={video.id} className=" overflow-hidden border border-border group">
+                  <div className="relative h-[80%] aspect-video bg-black flex items-center justify-center">
                     <video
                       data-id={video.id}
                       muted={videoState.isMuted}
@@ -152,7 +152,7 @@ export default function Gallery() {
                       </button>
                     </div>
                   </div>
-                  <div className="p-4">
+                  <div className="p-4 h-[20%]">
                     <h3 className="font-semibold">{video.title}</h3>
                     <p className="text-sm font-light text-foreground/70">{video.duration}</p>
                   </div>

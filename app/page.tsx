@@ -102,11 +102,14 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-        <video
+       <video
           ref={videoRef}
           autoPlay
           muted={isMuted}
           loop
+          playsInline
+          preload="metadata"
+          poster="/video-poster.png"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/club_vid.mp4" type="video/mp4" />

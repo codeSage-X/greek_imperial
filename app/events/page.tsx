@@ -30,29 +30,18 @@ export default function Events() {
 
   const upcomingEvents = [
     {
-      date: '02/14',
-      name: "Valentine's Night",
+      date: '12/12/25',
+      name: "Imperial Nights",
       img: '/event.png',
       description: 'An evening of romance and elegance with live music and premium champagne service',
     },
     {
-      date: '02/21',
-      name: 'Imperial Saturdays',
+       date: '12/12/25',
+      name: 'Imperial Nights',
       img: '/event.png',
-      description: 'Our weekly premium party night featuring international resident DJs and VIP experiences',
-    },
-    {
-      date: '03/07',
-      name: 'Afrobeats Takeover',
-      img: '/event.png',
-      description: 'Special themed night celebrating the best of African music and culture',
-    },
-    {
-      date: '03/21',
-      name: 'Spring Gala',
-      img: '/event.png',
-      description: 'An exclusive evening of sophistication, elegance, and premium entertainment',
-    },
+      description: 'A premium party night featuring international resident DJs and VIP experiences',
+    }
+   
   ]
 
   const pastEvents = [
@@ -78,7 +67,7 @@ export default function Events() {
       <section ref={addToRefs} className="py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold mb-4">Upcoming Events</h2>
+            <h2 className="text-4xl font-serif font-bold mb-4">Previous Events</h2>
             <p className="text-foreground/70 font-light">Join us for unforgettable nights of luxury and entertainment</p>
           </div>
 
@@ -103,7 +92,7 @@ export default function Events() {
       </section>
 
       {/* Past Events */}
-      <section ref={addToRefs} className="py-24 bg-muted/30">
+      {/* <section ref={addToRefs} className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-serif font-bold mb-4">Past Events</h2>
@@ -127,7 +116,7 @@ export default function Events() {
             <Button variant="outline" className="font-light bg-transparent">Load More</Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }

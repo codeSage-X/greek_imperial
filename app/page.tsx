@@ -186,14 +186,14 @@ export default function Home() {
       <section className="py-24 bg-background animate-onscroll">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold mb-4">Our Events</h2>
+            <h2 className="text-4xl font-serif font-bold mb-4">Previous Events</h2>
             <p className="text-foreground/70 font-light">Join us for unforgettable nights of luxury and entertainment</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             {[
-              { date: '02/14', name: 'Valentines Night', img: '/event.png', description: 'An evening of romance and elegance with live music and premium champagne service' },
-              { date: '02/21', name: 'Imperial Saturdays', img: '/event.png', description: 'Our weekly premium party night featuring international resident DJs and VIP experiences' },
+              { date: '12/12/25', name: 'Imperial Nights', img: '/event.png', description: 'An evening of romance and elegance with live music and premium champagne service' },
+              { date: '12/12/25', name: 'Imperial Nights', img: '/event.png', description: 'A premium party night featuring international resident DJs and VIP experiences' },
             ].map((event, index) => (
               <Card key={index} className="overflow-hidden border border-border hover:border-foreground/50 transition-colors">
                 <div className="relative h-64 w-full bg-red-400">

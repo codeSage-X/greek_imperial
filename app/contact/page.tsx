@@ -141,7 +141,7 @@ export default function Contact() {
                   <Mail className="h-7 w-7 text-zinc-400 flex-shrink-0" strokeWidth={1.5} />
                   <div className="text-left">
                     <h3 className="font-semibold text-white">Email Us</h3>
-                    <p className="text-sm text-zinc-400">info@greekimperial.com</p>
+                    <p className="text-sm text-zinc-400">hr.adaezejonas.creekngreek@gmail.com</p>
                   </div>
                 </div>
               </Card>
@@ -156,7 +156,7 @@ export default function Contact() {
                   <MessageCircle className="h-7 w-7 text-green-500 flex-shrink-0" strokeWidth={1.5} />
                   <div className="text-left">
                     <h3 className="font-semibold text-white">WhatsApp</h3>
-                    <p className="text-sm text-zinc-400">+234 706 0893 264</p>
+                    <p className="text-sm text-zinc-400">+234 703 055 2235</p>
                   </div>
                 </div>
               </Card>

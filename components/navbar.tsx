@@ -18,7 +18,7 @@ export default function Navbar() {
     { label: 'Events', href: '/events' },
     { label: 'Contact', href: '/contact' },
     { label: 'Write a review', href: '/review' },
-    { label: 'Creek n greek', href: 'https://creek-n-greek.vercel.app/' },
+    // { label: 'GREEK IMPERIAL', href: 'https://creek-n-greek.vercel.app/' },
   ]
 
   return (

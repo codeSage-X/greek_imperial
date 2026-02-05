@@ -52,8 +52,8 @@ export default function Footer() {
             </h3>
 
             <div className="space-y-3 text-sm font-light mb-6">
-              <p>+234 (0) 706 0893 264</p>
-              <p>info@greekimperial.com</p>
+              <p>+234 703 055 2235</p>
+              <p>hr.adaezejonas.creekngreek@gmail.com</p>
               <p className="text-xs text-primary-foreground/70">
                 Port Harcourt, Nigeria
               </p>

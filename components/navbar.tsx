@@ -17,8 +17,8 @@ export default function Navbar() {
     { label: 'Menu', href: '/menu' },
     { label: 'Events', href: '/events' },
     { label: 'Contact', href: '/contact' },
-    { label: 'Write a review', href: '/review' },
-    // { label: 'GREEK IMPERIAL', href: 'https://creek-n-greek.vercel.app/' },
+    { label: 'Feedback', href: '/review' },
+    { label: 'Go back', href: 'creekngreek.com' },
   ]
 
   return (

@@ -18,7 +18,7 @@ export default function Navbar() {
     { label: 'Events', href: '/events' },
     { label: 'Contact', href: '/contact' },
     { label: 'Feedback', href: '/review' },
-    { label: 'Go back', href: 'creekngreek.com' },
+    { label: 'Go back', href: 'https://www.creekngreek.com' },
   ]
 
   return (

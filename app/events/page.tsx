@@ -45,9 +45,9 @@ export default function Events() {
   ]
 
   const pastEvents = [
-    { id: 1, title: 'Imperial Nights', date: '01/01', img: '/event.png' },
-    { id: 2, title: 'Imperial Nights', date: '12/20/2024', img: '/event.png' },
-    { id: 3, title: 'Imperial Nights', date: '12/15/2024', img: '/event.png' },
+    { id: 1, title: 'Imperial Nights', date: '12 Dec 25', img: '/event.png' },
+    { id: 2, title: 'Imperial Nights', date: '12 Dec 25', img: '/event.png' },
+    { id: 3, title: 'Imperial Nights', date: '12 Dec 25', img: '/event.png' },
     // { id: 4, title: 'Soft Launch Event', date: '12/10/2024', img: '/event.png' },
     // { id: 5, title: 'Industry Night', date: '12/05/2024', img: '/event.png' },
     // { id: 6, title: 'Inaugural Celebration', date: '12/01/2024', img: '/event.png' },
